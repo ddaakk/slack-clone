@@ -52,6 +52,7 @@ Slack을 모티브로 만든 채팅 API 서버 토이 프로젝트입니다
 <details>
 <summary>접기/펼치기</summary>
 <br>
+
 **사용자 역할 및 권한**
 
 * 일반 사용자
