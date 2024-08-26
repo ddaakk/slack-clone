@@ -3,6 +3,8 @@ package clone.slack.server.user.domain;
 import clone.slack.server.support.domain.AggregateRoot;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JavaType;
@@ -27,6 +29,16 @@ public class User extends AggregateRoot<User, UserId> {
     @Embedded
     private UserInformation information;
 
+    public User(UserInformation information, Password password) {
+        this(null, information, password);
+    }
+
+    @Builder
+    public User(UserId id, UserInformation information, Password password) {
+        this.id = id;
+        this.information = information;
+        this.password = password;
+    }
 
     @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "password", nullable = false))

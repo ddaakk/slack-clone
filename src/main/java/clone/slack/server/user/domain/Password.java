@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -30,6 +31,8 @@ class PasswordSerializer extends JsonSerializer<Password> {
 }
 
 @Getter
+@NoArgsConstructor
+@Embeddable
 @JsonSerialize(using = PasswordSerializer.class)
 @JsonDeserialize(using = PasswordDeserializer.class)
 public class Password {

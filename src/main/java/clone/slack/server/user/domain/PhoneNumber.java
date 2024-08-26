@@ -6,8 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@Embeddable
+@NoArgsConstructor
 public class PhoneNumber extends ValueObject<PhoneNumber> {
-    private final String number;
+    private String number;
 
     public PhoneNumber(String number) {
         if (number == null || number.isEmpty()) {
@@ -20,6 +22,7 @@ public class PhoneNumber extends ValueObject<PhoneNumber> {
     }
 
 
+    @SuppressWarnings("JpaAttributeTypeInspection")
     @Override
     protected Object[] getEqualityFields() {
         return new Object[]{number};
@@ -31,6 +34,6 @@ public class PhoneNumber extends ValueObject<PhoneNumber> {
     }
 
     private boolean isValidPhoneNumber(String number) {
-        return number.matches("\\d{10,15}");
+        return number.matches("^(010-?\\d{4}-?\\d{4})$");
     }
 }

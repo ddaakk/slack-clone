@@ -14,7 +14,7 @@ public abstract class AggregateRoot<T extends DomainEntity<T, TID>, TID> extends
     @Transient
     private final transient List<Object> domainEvents = new ArrayList<>();
 
-    public AggregateRoot() {
+    protected AggregateRoot() {
     }
 
     protected void registerEvent(T event) {
